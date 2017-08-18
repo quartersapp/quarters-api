@@ -1,0 +1,14 @@
+{
+  "name": "ps-api",
+  "version": "0.0.1",
+  "description": "GraphQL API Server for PS",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Thomas Dashney",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
