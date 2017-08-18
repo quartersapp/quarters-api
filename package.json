@@ -2,13 +2,18 @@
   "name": "ps-api",
   "version": "0.0.1",
   "description": "GraphQL API Server for PS",
-  "main": "index.js",
   "scripts": {
+    "start": "node lib/server.js",
     "test": "standard"
   },
   "author": "Thomas Dashney",
   "license": "ISC",
   "devDependencies": {
     "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "config": "^1.26.2",
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1"
   }
 }
