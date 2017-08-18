@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "GraphQL API Server for PS",
   "scripts": {
-    "start": "node lib/server.js",
+    "start": "node bin/server.js",
     "test": "standard"
   },
   "author": "Thomas Dashney",
@@ -14,6 +14,7 @@
   "dependencies": {
     "config": "^1.26.2",
     "koa": "^2.3.0",
-    "koa-router": "^7.2.1"
+    "koa-router": "^7.2.1",
+    "serverless-http": "^1.5.0"
   }
 }
