@@ -3,12 +3,19 @@
   "version": "0.0.1",
   "description": "GraphQL API Server for PS",
   "scripts": {
-    "start": "node bin/server.js",
-    "test": "standard"
+    "start": "NODE_PATH=$NODE_PATH. node bin/server.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "migrate-test": "NODE_ENV=test knex migrate:latest",
+    "rollback-test": "NODE_ENV=test knex migrate:rollback",
+    "test": "NODE_ENV=test jest --config jest-config.json",
+    "posttest": "standard"
   },
   "author": "Thomas Dashney",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^20.0.4",
+    "moment": "^2.18.1",
     "standard": "^10.0.3"
   },
   "dependencies": {
@@ -16,9 +23,12 @@
     "config": "^1.26.2",
     "graphql": "^0.10.5",
     "graphql-tools": "^1.2.1",
+    "knex": "^0.13.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
+    "koa-oauth-server": "^1.0.1",
     "koa-router": "^7.2.1",
+    "pg": "^7.2.0",
     "serverless-http": "^1.5.0"
   }
 }
