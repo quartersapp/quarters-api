@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "GraphQL API Server for PS",
   "scripts": {
-    "start": "NODE_PATH=$NODE_PATH. node bin/server.js",
+    "start": "NODE_PATH=$NODE_PATH:. node bin/server.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "migrate-test": "NODE_ENV=test knex migrate:latest",
