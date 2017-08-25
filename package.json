@@ -1,5 +1,5 @@
 {
-  "name": "ps-api",
+  "name": "quarters-api",
   "version": "0.0.1",
   "description": "GraphQL API Server for PS",
   "scripts": {
