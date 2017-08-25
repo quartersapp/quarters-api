@@ -4,5 +4,8 @@
   "AUTH": {
     "TOKEN_SECRET": "super_secret_string",
     "PASSWORD_SALT_ROUNDS": 10
+  },
+  "LOGGER": {
+    "LEVEL": "info"
   }
 }

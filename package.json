@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "GraphQL API Server for PS",
   "scripts": {
-    "start": "NODE_PATH=$NODE_PATH:. node bin/server.js",
+    "start": "NODE_PATH=$NODE_PATH:. node bin/server.js | bunyan",
     "console": "NODE_PATH=$NODE_PATH:. node",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
@@ -24,6 +24,7 @@
   "dependencies": {
     "apollo-server-koa": "^1.1.0",
     "bcrypt": "^1.0.3",
+    "bunyan": "^1.8.12",
     "config": "^1.26.2",
     "graphql": "^0.10.5",
     "graphql-tools": "^1.2.1",

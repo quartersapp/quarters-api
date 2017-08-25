@@ -1,6 +1,7 @@
 const { PORT } = require('config')
-const app = require('../lib/app')
+const log = require('lib/logger')
+const app = require('lib/app')
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
+  log.info(`Server is running on port ${PORT}`)
 })
