@@ -43,37 +43,14 @@ exports.up = async (knex) => {
   await knex.schema.createTable('users', table => {
     table.integer('id').primary()
     table.string('email').unique().notNull()
-    table.string('password_hash').notNull()
     table.timestamps()
   })
   await knex.schema.raw(`
     ALTER TABLE users ALTER COLUMN id SET DEFAULT bounded_pseudo_encrypt(nextval('users_id_seq')::int, 16777215, 0);
   `)
-
-  // create oauth tables
-  await knex.schema.createTable('oauth_clients', table => {
-    table.increments()
-    table.string('client_secret').notNull()
-    table.string('redirect_uri').notNull()
-    table.timestamps()
-  })
-  await knex.schema.createTable('oauth_tokens ', table => {
-    table.increments()
-    table.string('access_token').notNull()
-    table.index('access_token')
-    table.dateTime('access_token_expires_on').notNull()
-    table.integer('client_id').notNull()
-    table.foreign('client_id').references('oauth_clients.id').onDelete('restrict')
-    table.string('refresh_token').notNull()
-    table.dateTime('refresh_token_expires_on').notNull()
-    table.integer('user_id').notNull()
-    table.foreign('user_id').references('users.id').onDelete('cascade')
-  })
 }
 
 exports.down = async (knex) => {
-  await knex.raw('DROP TABLE oauth_tokens CASCADE')
-  await knex.raw('DROP TABLE oauth_clients CASCADE')
   await knex.raw('DROP TABLE users CASCADE')
   await knex.schema.raw('DROP SEQUENCE users_id_seq')
   await knex.schema.raw('DROP FUNCTION pseudo_encrypt_24(VALUE int);')
