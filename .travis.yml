@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- 8.3.0
+cache:
+  directories:
+  - node_modules
+addons:
+  postgresql: '9.6'
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+branches:
+  only:
+  - master
+before_script:
+- psql -c 'create database quarters_test;' -U postgres
+- npm install
+- npm run migrate-test
+script: npm test
