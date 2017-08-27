@@ -1,5 +1,7 @@
 {
-  "DATABASE_URL": "postgres://localhost/quarters_test",
+  "DATABASE": {
+    "DATABASE": "quarters_test"
+  },
   "LOGGER": {
     "LEVEL": 100
   }

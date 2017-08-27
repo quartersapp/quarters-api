@@ -5,10 +5,11 @@
   "scripts": {
     "start": "NODE_PATH=$NODE_PATH:. node bin/server.js | bunyan",
     "console": "NODE_PATH=$NODE_PATH:. node",
-    "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback",
-    "migrate-test": "NODE_ENV=test knex migrate:latest",
-    "rollback-test": "NODE_ENV=test knex migrate:rollback",
+    "db": "babel-node ./node_modules/.bin/knex",
+    "migrate": "npm run db -- migrate:latest",
+    "rollback": "npm run db -- migrate:rollback",
+    "migrate-test": "NODE_ENV=test npm run db -- migrate:latest",
+    "rollback-test": "NODE_ENV=test npm run db -- migrate:rollback",
     "migrate-all": "npm run migrate && npm run migrate-test",
     "rollback-all": "npm run rollback && npm run rollback-test",
     "test": "NODE_ENV=test jest --config jest-config.json --runInBand --forceExit",
@@ -17,13 +18,19 @@
   "author": "Thomas Dashney",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
     "jest": "^20.0.4",
     "moment": "^2.18.1",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "webpack": "^3.5.5",
+    "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
     "apollo-server-koa": "^1.1.0",
-    "bcrypt": "^1.0.3",
+    "babel-cli": "^6.26.0",
+    "bcryptjs": "^2.4.3",
     "bunyan": "^1.8.12",
     "config": "^1.26.2",
     "graphql": "^0.10.5",

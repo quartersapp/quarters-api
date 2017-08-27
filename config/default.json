@@ -1,6 +1,12 @@
 {
   "PORT": 3000,
-  "DATABASE_URL": "postgres://localhost/quarters_development",
+  "API_PREFIX": "",
+  "DATABASE": {
+    "HOST": "localhost",
+    "USER": "vagrant",
+    "PASSWORD": null,
+    "DATABASE": "quarters_development"
+  },
   "AUTH": {
     "TOKEN_SECRET": "super_secret_string",
     "PASSWORD_SALT_ROUNDS": 10

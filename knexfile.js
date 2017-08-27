@@ -1,8 +1,20 @@
-const { DATABASE_URL } = require('config')
+const {
+  DATABASE: {
+    HOST,
+    USER,
+    PASSWORD,
+    DATABASE
+  }
+} = require('config')
 
 module.exports = {
   client: 'pg',
-  connection: DATABASE_URL,
+  connection: {
+    host: HOST,
+    user: USER,
+    password: PASSWORD,
+    database: DATABASE
+  },
   migrations: {
     directory: './db/migrations'
   }
