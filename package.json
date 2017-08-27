@@ -26,6 +26,7 @@
     "mockdate": "^2.0.2",
     "moment": "^2.18.1",
     "standard": "^10.0.3",
+    "supertest": "^3.0.0",
     "webpack": "^3.5.5",
     "webpack-node-externals": "^1.6.0"
   },
