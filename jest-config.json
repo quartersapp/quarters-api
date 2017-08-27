@@ -8,5 +8,8 @@
     "global": {
       "lines": 95
     }
-  }
+  },
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/(?!koa-bodyparser/)"
+  ]
 }
