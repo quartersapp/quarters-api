@@ -1,3 +1,7 @@
 {
-  "modulePaths": ["<rootDir>"]
+  "modulePaths": ["<rootDir>"],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/test-helpers",
+    "<rootDir>/node_modules/"
+  ]
 }
