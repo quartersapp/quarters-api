@@ -3,5 +3,10 @@
   "coveragePathIgnorePatterns": [
     "<rootDir>/test-helpers",
     "<rootDir>/node_modules/"
-  ]
+  ],
+  "coverageThreshold": {
+    "global": {
+      "lines": 95
+    }
+  }
 }
