@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can be queried for the current user 1`] = `
+Object {
+  "data": Object {
+    "currentUser": Object {
+      "email": "test@example.com",
+      "id": "12345",
+    },
+  },
+}
+`;
