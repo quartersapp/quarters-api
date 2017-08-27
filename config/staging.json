@@ -1,0 +1,5 @@
+{
+  "CORS_WHITELIST": [
+    "http://d3tt7r24gs4aj1.cloudfront.net"
+  ]
+}
