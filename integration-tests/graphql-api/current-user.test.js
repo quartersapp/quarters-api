@@ -3,13 +3,14 @@
 const request = require('supertest')
 const app = require('lib/app').listen()
 const { User } = require('lib/db/models')
+const { truncateModel } = require('test-helpers')
 const { userFactory } = require('test-helpers/factories')
 const { encode } = require('lib/auth/token-service')
 
 let user
 
 beforeEach(async () => {
-  await User.query().truncate()
+  await truncateModel(User)
   user = await User
     .query()
     .insert(userFactory({

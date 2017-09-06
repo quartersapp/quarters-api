@@ -1,0 +1,31 @@
+# Queries
+
+type Query {
+  currentUser: User,
+  conversations: [Conversation!]
+}
+
+# Custom Scalars
+
+scalar Timestamp
+
+# Types & Unions
+
+type User {
+  id: ID!,
+  email: String!,
+  name: String!
+}
+
+type Conversation {
+  id: ID!,
+  participants: [User!]!,
+  messages(first: Int): [Message!]!
+}
+
+type Message {
+  id: ID!,
+  author: User!,
+  body: String!,
+  sentAt: Timestamp!
+}
