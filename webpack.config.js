@@ -4,6 +4,9 @@ const nodeExternals = require('webpack-node-externals')
 module.exports = {
   entry: './bin/lambda.js',
   target: 'node',
+  node: {
+    __dirname: false // https://github.com/webpack/webpack/issues/1599
+  },
   externals: [
     nodeExternals({
       whitelist: 'koa-bodyparser'

@@ -1,4 +1,8 @@
 {
+  "LOGGER": {
+    "LEVEL": "trace",
+    "PRETTIFY_DB_QUERIES": false
+  },
   "CORS_WHITELIST": [
     "http://d3tt7r24gs4aj1.cloudfront.net"
   ]

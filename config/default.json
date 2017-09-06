@@ -12,7 +12,8 @@
     "PASSWORD_SALT_ROUNDS": 10
   },
   "LOGGER": {
-    "LEVEL": "info"
+    "LEVEL": "info",
+    "PRETTIFY_DB_QUERIES": true
   },
   "CORS_WHITELIST": [
     "http://localhost:8080"
