@@ -14,7 +14,7 @@ const { truncateModel } = require('test-helpers')
 const { userFactory } = require('test-helpers/factories')
 const { encode } = require('lib/auth/token-service')
 
-let user
+let conversation, user
 
 MockDate.set(new Date(1504659609251))
 
@@ -45,7 +45,7 @@ beforeEach(async () => {
     .returning('*')
 
   // create conversation
-  const conversation = await Conversation.query().insert({}).returning('*')
+  conversation = await Conversation.query().insert({}).returning('*')
 
   // create participants
   await ConversationParticipant.query().insert({
@@ -99,6 +99,41 @@ it("can be queried for the current user's conversations", async () => {
     .post('/graphql')
     .set('authorization', `Bearer ${token}`)
     .send({ query })
+
+  expect(body).toMatchSnapshot()
+})
+
+it('can be queried for a single conversation and its messages', async () => {
+  const token = encode({ userId: user.id })
+
+  const query = `
+    query LoadConversationMessages($conversationId: ID!) {
+      currentUser { id }
+
+      conversation(id: $conversationId) {
+        participants {
+          id, name
+        }
+
+        messages {
+          body,
+          author {
+            id,
+            name
+          },
+          sentAt
+        }
+      }
+    }
+  `
+
+  const { body } = await request(app)
+    .post('/graphql')
+    .set('authorization', `Bearer ${token}`)
+    .send({
+      query,
+      variables: { conversationId: conversation.id }
+    })
 
   expect(body).toMatchSnapshot()
 })

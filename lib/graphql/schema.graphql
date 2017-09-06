@@ -2,7 +2,8 @@
 
 type Query {
   currentUser: User,
-  conversations: [Conversation!]
+  conversations: [Conversation!],
+  conversation(id: ID!): Conversation
 }
 
 # Custom Scalars
