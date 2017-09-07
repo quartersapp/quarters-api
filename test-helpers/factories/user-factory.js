@@ -1,5 +1,5 @@
 const { internet, name } = require('faker')
-const { hashSync } = require('lib/auth/password-service')
+const { hashSync } = require('lib/services/password-service')
 const createFactory = require('./create-factory')
 
 module.exports = createFactory({

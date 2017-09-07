@@ -9,7 +9,7 @@ module.exports = {
   },
   externals: [
     nodeExternals({
-      whitelist: 'koa-bodyparser'
+      whitelist: ['koa-mount', 'koa-bodyparser']
     })
   ],
   resolve: {

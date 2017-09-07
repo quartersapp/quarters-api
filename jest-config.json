@@ -10,6 +10,6 @@
     }
   },
   "transformIgnorePatterns": [
-    "<rootDir>/node_modules/(?!koa-bodyparser/)"
+    "<rootDir>/node_modules/(?!koa-bodyparser|koa-mount).*/.*"
   ]
 }

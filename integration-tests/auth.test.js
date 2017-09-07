@@ -5,7 +5,7 @@ const app = require('lib/app').listen()
 const { User } = require('lib/db/models')
 const { truncateModel } = require('test-helpers')
 const { userFactory } = require('test-helpers/factories')
-const { hash } = require('lib/auth/password-service')
+const { hash } = require('lib/services/password-service')
 
 beforeEach(async () => {
   await truncateModel(User)
