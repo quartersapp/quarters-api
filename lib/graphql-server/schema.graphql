@@ -2,8 +2,9 @@
 
 type Query {
   currentUser: User,
-  conversations: [Conversation!],
-  conversation(id: ID!): Conversation
+  conversations: [Conversation!]!,
+  conversation(id: ID!): Conversation,
+  showsForCity(cityId: ID!): [Show!]!
 }
 
 # Custom Scalars
@@ -29,4 +30,37 @@ type Message {
   author: User!,
   body: String!,
   sentAt: Timestamp!
+}
+
+type City {
+  id: ID!,
+  name: String!,
+  googlePlaceId: String!
+}
+
+type Venue {
+  id: ID!,
+  name: String!,
+  city: City!,
+  googlePlaceId: String!
+}
+
+type Genre {
+  id: ID!,
+  name: String!
+}
+
+type Artist {
+  id: ID!,
+  name: String!,
+  bio: String!,
+  city: City!,
+  genres: [Genre!]!
+}
+
+type Show {
+  id: ID!,
+  day: String!, # TODO: make a YYYY-MM-DD scalar type
+  venue: Venue!,
+  artists: [Artist!]!
 }
