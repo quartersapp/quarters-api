@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can be queried for an artist 1`] = `
+Object {
+  "data": Object {
+    "artist": Object {
+      "bio": "Juno-award winning artist from Canada",
+      "city": Object {
+        "name": "Toronto",
+      },
+      "genres": Array [
+        Object {
+          "name": "rock",
+        },
+        Object {
+          "name": "folk",
+        },
+      ],
+      "shows": Array [
+        Object {
+          "artists": Array [
+            Object {
+              "name": "Andy Shauf",
+            },
+          ],
+          "day": "2018-05-01",
+          "venue": Object {
+            "city": Object {
+              "name": "Toronto",
+            },
+            "name": "Horseshoe Tavern",
+          },
+        },
+        Object {
+          "artists": Array [
+            Object {
+              "name": "Andy Shauf",
+            },
+          ],
+          "day": "2018-05-15",
+          "venue": Object {
+            "city": Object {
+              "name": "Toronto",
+            },
+            "name": "Horseshoe Tavern",
+          },
+        },
+      ],
+    },
+  },
+}
+`;
