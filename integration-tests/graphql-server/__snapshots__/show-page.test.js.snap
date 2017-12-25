@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can be queried for a show 1`] = `
+Object {
+  "data": Object {
+    "show": Object {
+      "ageRestriction": "19+",
+      "artists": Array [
+        Object {
+          "genres": Array [
+            Object {
+              "name": "rock",
+            },
+            Object {
+              "name": "folk",
+            },
+          ],
+          "name": "Andy Shauf",
+        },
+        Object {
+          "genres": Array [
+            Object {
+              "name": "indie",
+            },
+          ],
+          "name": "Born Ruffians",
+        },
+      ],
+      "day": "2018-05-01",
+      "doorTime": "18:00:00",
+      "ticketLink": "http://some_url.com/tickets",
+      "venue": Object {
+        "googlePlaceId": "place-id",
+        "name": "Horseshoe Tavern",
+      },
+    },
+  },
+}
+`;

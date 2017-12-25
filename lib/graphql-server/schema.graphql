@@ -4,7 +4,8 @@ type Query {
   currentUser: User,
   conversations: [Conversation!]!,
   conversation(id: ID!): Conversation,
-  showsForCity(cityId: ID!): [Show!]!
+  showsForCity(cityId: ID!): [Show!]!,
+  show(id: ID!): Show
 }
 
 # Custom Scalars
@@ -63,4 +64,7 @@ type Show {
   day: String!, # TODO: make a YYYY-MM-DD scalar type
   venue: Venue!,
   artists: [Artist!]!
+  doorTime: String,
+  ageRestriction: String,
+  ticketLink: String
 }
