@@ -5,7 +5,9 @@
     "HOST": "localhost",
     "USER": "vagrant",
     "PASSWORD": null,
-    "DATABASE": "quarters_development"
+    "DATABASE": "quarters_development",
+    "MAX_CONNECTIONS": 2,
+    "MIN_CONNECTIONS": 10
   },
   "AUTH": {
     "TOKEN_SECRET": "super_secret_string",

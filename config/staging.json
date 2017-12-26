@@ -1,4 +1,8 @@
 {
+  "DATABASE": {
+    "MAX_CONNECTIONS": 1,
+    "MIN_CONNECTIONS": 1
+  },
   "LOGGER": {
     "LEVEL": "trace",
     "PRETTIFY_DB_QUERIES": false
