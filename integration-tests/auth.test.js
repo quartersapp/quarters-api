@@ -7,6 +7,8 @@ const { truncateModel } = require('test-helpers')
 const { userFactory } = require('test-helpers/factories')
 const { hash } = require('lib/services/password-service')
 
+afterAll(() => require('lib/db/connection').destroy())
+
 beforeEach(async () => {
   await truncateModel(User)
   await User

@@ -6,7 +6,10 @@
   ],
   "coverageThreshold": {
     "global": {
-      "lines": 95
+      "lines": 97
+    },
+    "./lib/admin-server/": {
+      "lines": 0
     }
   },
   "transformIgnorePatterns": [

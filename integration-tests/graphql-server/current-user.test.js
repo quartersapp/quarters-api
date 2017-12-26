@@ -9,6 +9,8 @@ const { generateToken } = require('lib/services/token-service')
 
 let user
 
+afterAll(() => require('lib/db/connection').destroy())
+
 beforeEach(async () => {
   await truncateModel(User)
   user = await User

@@ -15,7 +15,5 @@
     "LEVEL": "info",
     "PRETTIFY_DB_QUERIES": true
   },
-  "CORS_WHITELIST": [
-    "http://localhost:8080"
-  ]
+  "CORS_WHITELIST": "*"
 }

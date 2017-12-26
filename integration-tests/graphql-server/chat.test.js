@@ -18,6 +18,8 @@ let conversation, user
 
 MockDate.set(new Date(1504659609251))
 
+afterAll(() => require('lib/db/connection').destroy())
+
 beforeEach(async () => {
   await Promise.all([
     Conversation,

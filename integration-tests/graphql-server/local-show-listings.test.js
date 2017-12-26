@@ -13,6 +13,8 @@ const { truncateModel } = require('test-helpers')
 
 let city
 
+afterAll(() => require('lib/db/connection').destroy())
+
 beforeEach(async () => {
   await Promise.all([
     ShowArtist,

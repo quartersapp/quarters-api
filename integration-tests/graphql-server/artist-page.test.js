@@ -15,6 +15,8 @@ const { truncateModel } = require('test-helpers')
 
 let artist
 
+afterAll(() => require('lib/db/connection').destroy())
+
 beforeEach(async () => {
   await Promise.all([
     ArtistGenre,
