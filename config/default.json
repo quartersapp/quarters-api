@@ -3,11 +3,11 @@
   "API_PREFIX": "",
   "DATABASE": {
     "HOST": "localhost",
-    "USER": "vagrant",
+    "USER": "root",
     "PASSWORD": null,
-    "DATABASE": "quarters_development",
-    "MAX_CONNECTIONS": 2,
-    "MIN_CONNECTIONS": 10
+    "DATABASE": "quarters_dev",
+    "MAX_CONNECTIONS": 10,
+    "MIN_CONNECTIONS": 2
   },
   "AUTH": {
     "TOKEN_SECRET": "super_secret_string",
