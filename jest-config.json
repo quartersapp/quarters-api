@@ -14,5 +14,6 @@
   },
   "transformIgnorePatterns": [
     "<rootDir>/node_modules/(?!koa-bodyparser|koa-mount).*/.*"
-  ]
+  ],
+  "testEnvironment": "node"
 }

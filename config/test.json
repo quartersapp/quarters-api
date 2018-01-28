@@ -1,6 +1,8 @@
 {
   "DATABASE": {
-    "DATABASE": "quarters_test"
+    "DATABASE": "quarters_test",
+    "MAX_CONNECTIONS": 2,
+    "MIN_CONNECTIONS": 0
   },
   "LOGGER": {
     "LEVEL": 100
