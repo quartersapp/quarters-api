@@ -12,7 +12,7 @@
     "rollback-test": "NODE_ENV=test npm run db -- migrate:rollback",
     "migrate-all": "npm run migrate && npm run migrate-test",
     "rollback-all": "npm run rollback && npm run rollback-test",
-    "test": "NODE_ENV=test NODE_PATH=$NODE_PATH:. mocha --opts mocha.opts",
+    "test": "NODE_ENV=test NODE_PATH=$NODE_PATH:. nyc mocha --opts mocha.opts",
     "posttest": "standard"
   },
   "author": "Thomas Dashney",
@@ -30,6 +30,7 @@
     "mockdate": "^2.0.2",
     "moment": "^2.18.1",
     "npm": "^5.6.0",
+    "nyc": "^11.4.1",
     "sinon": "^4.2.2",
     "sinon-chai": "^2.14.0",
     "standard": "^10.0.3",
@@ -61,6 +62,19 @@
     "sql-formatter": "^2.0.0"
   },
   "standard": {
-    "globals": ["expect"]
+    "globals": [
+      "expect"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 97,
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "exclude": [
+      "lib/admin-server"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 6.10.3
+- 8.3.0
 cache:
   directories:
   - node_modules
@@ -20,8 +20,8 @@ branches:
 before_script:
 - psql -c 'create database quarters_test;' -U postgres
 - psql -c "CREATE USER root;" -U postgres
-- CI=true npm run migrate-test
-script: npm test -- --coverage --ci
+- npm run migrate-test
+script: CI=true npm t
 after_success:
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < ./coverage/lcov.info
@@ -47,7 +47,7 @@ env:
   # DB_NAME
   - secure: l58E7IaTzQQOUxzQhTv4ryd34JWS4QEAWry11MMVBp07cGO3KKGje9NoUrLmHUscUKV3I/9cDh3zF/7jqbZhZc7q7KP+DnuMIGNn4/dNqimRQCy5ZGtGFFmLJfIWtBPw7h+5TtWSbCO6q4s7KUH/5eZN4MNFTRWYpAxW4kAitwtyyxPjLLepX1NmBXuwzOek5HRIOHn2RHZTKOAM+47BjYGWUvdcLIrNHSQoCHakjhV35db10XtLVzWukoNVqGMYRucEmmgwAy9CbiqkG9nbJXV15gGvjjvKf0BElQf5hO8ey1gZPR3zQ4qYLbLJH3zH02Ub+CXCEq+6QwRb3hD0EnuR3OgZ0EMFenEYdKaAiQdBcu55GMy9LwvZfsX/LhEhv5Og1vfYQnLEuBF9BU1WC2hkQg2d3F6907Q5d6b2QaxluUdgKa6KBWo0VHL4P78flpu3zPUbFy4lg6tHYaQNpWOWbm7yMI1SpCy4AADuqudtEZblrfkB5Q2jhQjr6QvWWaTWVwa1U6nd0FVeFBvPDgC4BnM4+JVD9HOR8QJAYYY6PuEysJPrSQhjdmmohgG8MN9av9qZPAbReCfbf2ru6hlIyg6OU8M03yIJ18+cdMhTFfmFJZoOsgHD3HHT1GkULJiE5ofWI4ujxqyY6EB6PS1ku/PQFwl6R9jBK2b+NTk=
   # CODE_CLIMATE_TOKEN
-  - secure: ClEYeHI4p+OuXuNEMb5Ks0p1faeBw5vSH4B8LST1lhjbUE4EL83PH8du8kcrnlzpmVMKJ9/5pQ/SEGIUFAY7XkAGnPtegcC1YL0zzHYgksBym9ku8WqUHJcywdHbskrXT0TZLSSpADQwR3RpE1CQApeG8+9ujpxWhhWXY7BISeN70bR19LdmyZIx6EmIILKfJ/8L3bHC9nB1JsxNI5OK6A0MCmIH80LUXTXeXYlPO39/oa+0gJ49ueXjQLHQ9zw/3D0F3HXtBoPc00P7ZVM5kzvTkNwy9JFEi/FyJiQtkW9iq2OxqX8q5XgjcL2nsPg8XXH70iu7fo482co+nXfVqbFdt3ORr7qvujQvRvB/QmxWu6AQkro7eqyzpKYjX1Yv9CXfrFM5rg7tbk98B+20RAV+qUVPBWKmMOa3YrpM/pr0HLb6gihu62oHa2y7kkHB+8FrrKQit6Mmvp3AwXV3Zp6l+Gw8Dyk7S/SGjD8U1TxvsRHFPyEOm3qZhL47djpQAE2238ne/5rPhtNEh49ghVUi8ej0dQythJwYbt5rYEZrnQnW/ryz1g8pG9fCIT/PmxVBMQ/fA9wQfjpXrk8YWTZi7hr1pSLU4Mwg6gNGflOsUp7UvLbDnuh4u8jVz0VktkvUYI6xHa32xJlPLFSQgHTH2g81L2iLKadCBFlKrd4=
+  - secure: UQA/ZpV5mPv2iKPga34iyDMHyd2Dnw6LMAJFESbzWV16jaUNnqsxKuJTxAdAoBAGLSawyYFSRIDf8QT3qC9ywWUDWt9Nzs4uUAPrWuaF6ZRuolJlI3NuAgeoTburz04IelVK7BwMELRy2bKARvHNMx+d+/ah6JhpW+uNjp2rOEFCWdcJrhMeMwdywsQDs0VmF6a14asEif4LseHuSD+q7ktD/inGjYV89WvrKQCErmYWMlNd0g1R58kYddbunyUICv06oePSDHB4f6bxSHkwPnOvfWPeqJvG6RMd/x4AK+F3PY5rmb1YjAxaJJ4ZG7eu039JbGk8wSVA4dEWd/K9Af60gNPMD7ARVCIYiVNTH7mmS82QjVx49+lAbhm+jBsO+EXgSfP+Z/SlFeZYHx06n4wFqnbRcyUIeLZFbMCKztXWI2o22tX5hcZ/oQU3wtz3LUfjQi5Y0DhVTimXJ9jmtZTmRfBSc9x0++/iHMGdUFqJ9PNfurAkq2GXUVvQmonkc5D88C0zgbSmJWkUJLQMEeNBgu2psrLxQovKs2w6FRTWCC8F+7B9stj5ZAe4RQs6dkhHm7Nx6ZUArB5xiFz9M+fSOkRD3x6TwCmwwOZLB08ukeoY/j9qsjie6BO6CrVQQS+SB9PfhsGMsouwFKxVIQfcwqOPgdOVWv6CKGtV/JY=
 before_deploy:
 - "./node_modules/.bin/webpack"
 - DATABASE_HOST=$DB_HOST DATABASE_USER=$DB_USERNAME DATABASE_PASSWORD=$DB_PASSWORD
