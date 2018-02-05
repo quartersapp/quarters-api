@@ -1,0 +1,6 @@
+lib/**/*.test.js
+integration-tests/**/*.test.js
+--require test-setup.js
+--reporter spec
+--recursive
+--exit

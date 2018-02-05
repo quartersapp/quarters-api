@@ -20,7 +20,7 @@ branches:
 before_script:
 - psql -c 'create database quarters_test;' -U postgres
 - psql -c "CREATE USER root;" -U postgres
-- npm run migrate-test
+- CI=true npm run migrate-test
 script: npm test -- --coverage --ci
 after_success:
   - npm install -g codeclimate-test-reporter
