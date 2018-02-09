@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can create a new host user 1`] = `
+Object {
+  "data": Object {
+    "createHostUser": Object {
+      "user": Object {
+        "email": "lucas.m@gmail.com",
+        "name": "Lucas M.",
+      },
+    },
+  },
+}
+`;
