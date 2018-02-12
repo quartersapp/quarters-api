@@ -30,40 +30,34 @@ describe('integration-tests/graphql-server/chat', () => {
       User
     ].map(truncateModel))
 
-    user = await User
-      .query()
-      .insert(userFactory({
-        id: 12345,
-        firstName: 'John',
-        lastName: 'Smith'
-      }))
-      .returning('*')
+    user = await User.create(userFactory({
+      id: 12345,
+      firstName: 'John',
+      lastName: 'Smith'
+    }))
 
-    const user2 = await User
-      .query()
-      .insert(userFactory({
-        id: 23456,
-        firstName: 'Jane',
-        lastName: 'Doe'
-      }))
-      .returning('*')
+    const user2 = await User.create(userFactory({
+      id: 23456,
+      firstName: 'Jane',
+      lastName: 'Doe'
+    }))
 
     // create conversation
-    conversation = await Conversation.query().insert({}).returning('*')
+    conversation = await Conversation.create()
 
     // create participants
-    await ConversationParticipant.query().insert({
+    await ConversationParticipant.insert({
       conversationId: conversation.id,
       userId: user.id
     })
 
-    await ConversationParticipant.query().insert({
+    await ConversationParticipant.insert({
       conversationId: conversation.id,
       userId: user2.id
     })
 
     const createMessage = (user, body, date) => {
-      return ChatMessage.query().insert({
+      return ChatMessage.insert({
         conversationId: conversation.id,
         userId: user.id,
         body,

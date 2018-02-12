@@ -29,66 +29,56 @@ describe('integration-tests/graphql-server/artist-page', () => {
       Venue
     ].map(truncateModel))
 
-    const city = await City.query()
-      .insert({
-        name: 'Toronto',
-        googlePlaceId: 'place-id'
-      })
-      .returning('*')
+    const city = await City.create({
+      name: 'Toronto',
+      googlePlaceId: 'place-id'
+    })
 
-    artist = await Artist.query()
-      .insert({
-        name: 'Andy Shauf',
-        cityId: city.id,
-        bio: 'Juno-award winning artist from Canada'
-      })
-      .returning('*')
+    artist = await Artist.create({
+      name: 'Andy Shauf',
+      cityId: city.id,
+      bio: 'Juno-award winning artist from Canada'
+    })
 
-    const venue = await Venue.query()
-      .insert({
-        name: 'Horseshoe Tavern',
-        cityId: city.id,
-        googlePlaceId: 'place-id'
-      })
-      .returning('*')
+    const venue = await Venue.create({
+      name: 'Horseshoe Tavern',
+      cityId: city.id,
+      googlePlaceId: 'place-id'
+    })
 
-    const show1 = await Show.query()
-      .insert({
-        venueId: venue.id,
-        day: '2018-05-01'
-      })
-      .returning('*')
+    const show1 = await Show.create({
+      venueId: venue.id,
+      day: '2018-05-01'
+    })
 
-    const show2 = await Show.query()
-      .insert({
-        venueId: venue.id,
-        day: '2018-05-015'
-      })
-      .returning('*')
+    const show2 = await Show.create({
+      venueId: venue.id,
+      day: '2018-05-015'
+    })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show1.id,
       artistId: artist.id,
       position: 0
     })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show2.id,
       artistId: artist.id,
       position: 0
     })
 
     const genres = await Promise.all(['rock', 'folk', 'indie'].map(name => {
-      return Genre.query().insert({ name }).returning('*')
+      return Genre.create({ name })
     }))
 
-    await ArtistGenre.query().insert({
+    await ArtistGenre.insert({
       artistId: artist.id,
       genreId: genres[0].id,
       position: 0
     })
 
-    await ArtistGenre.query().insert({
+    await ArtistGenre.insert({
       artistId: artist.id,
       genreId: genres[1].id,
       position: 1

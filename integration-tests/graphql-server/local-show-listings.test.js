@@ -25,69 +25,55 @@ describe('integration-tests/graphql-server/local-show-listings', () => {
       Venue
     ].map(truncateModel))
 
-    city = await City.query()
-      .insert({
-        name: 'Toronto',
-        googlePlaceId: 'place-id'
-      })
-      .returning('*')
+    city = await City.create({
+      name: 'Toronto',
+      googlePlaceId: 'place-id'
+    })
 
-    const venue = await Venue.query()
-      .insert({
-        name: 'Horseshoe Tavern',
-        cityId: city.id,
-        googlePlaceId: 'place-id'
-      })
-      .returning('*')
+    const venue = await Venue.create({
+      name: 'Horseshoe Tavern',
+      cityId: city.id,
+      googlePlaceId: 'place-id'
+    })
 
-    const show1 = await Show.query()
-      .insert({
-        venueId: venue.id,
-        day: '2018-05-01'
-      })
-      .returning('*')
+    const show1 = await Show.create({
+      venueId: venue.id,
+      day: '2018-05-01'
+    })
 
-    const show2 = await Show.query()
-      .insert({
-        venueId: venue.id,
-        day: '2018-05-05'
-      })
-      .returning('*')
+    const show2 = await Show.create({
+      venueId: venue.id,
+      day: '2018-05-05'
+    })
 
-    const andyShauf = await Artist.query()
-      .insert({
-        name: 'Andy Shauf',
-        cityId: city.id
-      })
-      .returning('*')
+    const andyShauf = await Artist.create({
+      name: 'Andy Shauf',
+      cityId: city.id
+    })
 
-    const bornRuffians = await Artist.query()
-      .insert({
-        name: 'Born Ruffians',
-        cityId: city.id
-      })
-      .returning('*')
+    const bornRuffians = await Artist.create({
+      name: 'Born Ruffians',
+      cityId: city.id
+    })
 
-    const localNatives = await Artist.query()
-      .insert({
-        name: 'Local Natives',
-        cityId: city.id
-      })
-      .returning('*')
+    const localNatives = await Artist.create({
+      name: 'Local Natives',
+      cityId: city.id
+    })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show1.id,
       artistId: andyShauf.id,
       position: 0
     })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show1.id,
       artistId: bornRuffians.id,
       position: 1
     })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show2.id,
       artistId: localNatives.id,
       position: 1

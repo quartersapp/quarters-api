@@ -10,12 +10,10 @@ const { hash } = require('lib/services/password-service')
 describe('integration-tests/auth', () => {
   beforeEach(async () => {
     await truncateModel(User)
-    await User
-      .query()
-      .insert(userFactory({
-        email: 'test@example.com',
-        passwordHash: await hash('password')
-      }))
+    await User.insert(userFactory({
+      email: 'test@example.com',
+      passwordHash: await hash('password')
+    }))
   })
 
   it('allows the user to log in', async () => {

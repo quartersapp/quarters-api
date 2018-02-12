@@ -29,74 +29,64 @@ describe('integration-tests/graphql-server/show-page', () => {
       Venue
     ].map(truncateModel))
 
-    const city = await City.query()
-      .insert({
-        name: 'Toronto',
-        googlePlaceId: 'place-id'
-      })
-      .returning('*')
+    const city = await City.create({
+      name: 'Toronto',
+      googlePlaceId: 'place-id'
+    })
 
-    const venue = await Venue.query()
-      .insert({
-        name: 'Horseshoe Tavern',
-        cityId: city.id,
-        googlePlaceId: 'place-id'
-      })
-      .returning('*')
+    const venue = await Venue.create({
+      name: 'Horseshoe Tavern',
+      cityId: city.id,
+      googlePlaceId: 'place-id'
+    })
 
-    show = await Show.query()
-      .insert({
-        venueId: venue.id,
-        day: '2018-05-01',
-        ageRestriction: '19+',
-        doorTime: '18:00:00',
-        ticketLink: 'http://some_url.com/tickets'
-      })
-      .returning('*')
+    show = await Show.create({
+      venueId: venue.id,
+      day: '2018-05-01',
+      ageRestriction: '19+',
+      doorTime: '18:00:00',
+      ticketLink: 'http://some_url.com/tickets'
+    })
 
-    const andyShauf = await Artist.query()
-      .insert({
-        name: 'Andy Shauf',
-        cityId: city.id
-      })
-      .returning('*')
+    const andyShauf = await Artist.create({
+      name: 'Andy Shauf',
+      cityId: city.id
+    })
 
-    const bornRuffians = await Artist.query()
-      .insert({
-        name: 'Born Ruffians',
-        cityId: city.id
-      })
-      .returning('*')
+    const bornRuffians = await Artist.create({
+      name: 'Born Ruffians',
+      cityId: city.id
+    })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show.id,
       artistId: andyShauf.id,
       position: 0
     })
 
-    await ShowArtist.query().insert({
+    await ShowArtist.insert({
       showId: show.id,
       artistId: bornRuffians.id,
       position: 1
     })
 
     const genres = await Promise.all(['rock', 'folk', 'indie'].map(name => {
-      return Genre.query().insert({ name }).returning('*')
+      return Genre.create({ name })
     }))
 
-    await ArtistGenre.query().insert({
+    await ArtistGenre.insert({
       artistId: andyShauf.id,
       genreId: genres[0].id,
       position: 0
     })
 
-    await ArtistGenre.query().insert({
+    await ArtistGenre.insert({
       artistId: andyShauf.id,
       genreId: genres[1].id,
       position: 1
     })
 
-    await ArtistGenre.query().insert({
+    await ArtistGenre.insert({
       artistId: bornRuffians.id,
       genreId: genres[2].id,
       position: 0

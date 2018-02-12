@@ -14,12 +14,10 @@ describe('integration-tests/graphql-server/current-user', () => {
 
   beforeEach(async () => {
     await truncateModel(User)
-    user = await User
-      .query()
-      .insert(userFactory({
-        id: 12345,
-        email: 'test@example.com'
-      }))
+    user = await User.create(userFactory({
+      id: 12345,
+      email: 'test@example.com'
+    }))
   })
 
   it('can be queried for the current user', async () => {
