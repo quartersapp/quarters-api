@@ -58,7 +58,7 @@
     "koa-qs": "^2.0.0",
     "koa-router": "^7.2.1",
     "lodash": "^4.17.4",
-    "objection": "^0.8.8",
+    "objection": "^1.0.0-rc.13",
     "pg": "^7.2.0",
     "revalidate": "^1.2.0",
     "serverless-http": "^1.5.0",
