@@ -1,7 +1,7 @@
 const faker = require('faker')
-const moment = require('moment')
+const { DateTime } = require('luxon')
 const createFactory = require('./create-factory')
 
 module.exports = createFactory({
-  day: () => moment(faker.date.future()).format('YYYY-MM-DD')
+  day: () => DateTime.fromJSDate(faker.date.future()).toISODate('YYYY-MM-DD')
 })

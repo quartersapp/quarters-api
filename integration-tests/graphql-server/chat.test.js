@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-const moment = require('moment')
+const { DateTime } = require('luxon')
 const request = require('supertest')
 const MockDate = require('mockdate')
 const app = require('lib/app').listen()
@@ -66,9 +66,9 @@ describe('integration-tests/graphql-server/chat', () => {
     }
 
     // create chat messages
-    await createMessage(user, 'Hello!', moment().subtract(3, 'minutes').toDate())
-    await createMessage(user2, 'Whatsup?', moment().subtract(2, 'minute').toDate())
-    await createMessage(user, 'Not much!', moment().subtract(1, 'minute').toDate())
+    await createMessage(user, 'Hello!', DateTime.local().minus({ minutes: 3 }).toJSDate())
+    await createMessage(user2, 'Whatsup?', DateTime.local().minus({ minutes: 2 }).toJSDate())
+    await createMessage(user, 'Not much!', DateTime.local().minus({ minutes: 1 }).toJSDate())
   })
 
   it("can be queried for the current user's conversations", async () => {
