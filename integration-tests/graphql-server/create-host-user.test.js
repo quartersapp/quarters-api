@@ -15,7 +15,9 @@ describe('integration-tests/graphql-server/create-host-user', () => {
         firstName: 'Lucas',
         lastName: 'McLaughlin',
         email: 'lucas.m@gmail.com',
-        password: 'pass1234'
+        password: 'pass1234',
+        hostBio: 'test host bio',
+        hostGooglePlaceId: 'test-google-place-id'
       }
     }
 

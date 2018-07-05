@@ -19,7 +19,9 @@ input CreateHostUserInput {
   firstName: String!,
   lastName: String!,
   email: String!,
-  password: String!
+  password: String!,
+  hostBio: String!,
+  hostGooglePlaceId: String!
 }
 
 type CreateHostUserPayload {
