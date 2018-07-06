@@ -3,17 +3,16 @@
 const request = require('supertest')
 const app = require('lib/app').listen()
 const { User } = require('lib/db/models')
-const { truncateModel } = require('test-helpers')
-const { userFactory } = require('test-helpers/factories')
+const { fixture, truncate } = require('test-helpers')
 const { hash } = require('lib/services/password-service')
 
 describe('integration-tests/auth', () => {
   beforeEach(async () => {
-    await truncateModel(User)
-    await User.insert(userFactory({
+    await truncate(User)
+    await fixture(User, {
       email: 'test@example.com',
       passwordHash: await hash('password')
-    }))
+    })
   })
 
   it('allows the user to log in', async () => {

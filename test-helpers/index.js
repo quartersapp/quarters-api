@@ -2,7 +2,8 @@ const path = require('path')
 const chaiJestSnapshot = require('chai-jest-snapshot')
 
 module.exports = {
-  truncateModel: require('./truncate-model'),
+  truncate: require('./truncate'),
+  fixture: require('./fixture'),
   enableSnapshots: function () {
     chaiJestSnapshot.configureUsingMochaContext(this)
     const { currentTest } = this

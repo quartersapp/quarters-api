@@ -11,7 +11,7 @@ const {
   Venue,
   ShowArtist
 } = require('lib/db/models')
-const { truncateModel, enableSnapshots } = require('test-helpers')
+const { truncate, enableSnapshots } = require('test-helpers')
 
 describe('integration-tests/graphql-server/show-page', () => {
   let show
@@ -19,7 +19,7 @@ describe('integration-tests/graphql-server/show-page', () => {
   beforeEach(enableSnapshots)
 
   beforeEach(async () => {
-    await Promise.all([
+    await truncate([
       ArtistGenre,
       Genre,
       ShowArtist,
@@ -27,7 +27,7 @@ describe('integration-tests/graphql-server/show-page', () => {
       City,
       Show,
       Venue
-    ].map(truncateModel))
+    ])
 
     const city = await City.create({
       name: 'Toronto',

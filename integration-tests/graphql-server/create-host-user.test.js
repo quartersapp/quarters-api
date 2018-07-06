@@ -3,10 +3,10 @@
 const request = require('supertest')
 const app = require('lib/app').listen()
 const { User } = require('lib/db/models')
-const { truncateModel, enableSnapshots } = require('test-helpers')
+const { truncate, enableSnapshots } = require('test-helpers')
 
 describe('integration-tests/graphql-server/create-host-user', () => {
-  beforeEach(() => truncateModel(User))
+  beforeEach(() => truncate(User))
   beforeEach(enableSnapshots)
 
   it('can create a new host user', async () => {

@@ -3,8 +3,7 @@
 const request = require('supertest')
 const app = require('lib/app').listen()
 const { User } = require('lib/db/models')
-const { truncateModel, enableSnapshots } = require('test-helpers')
-const { userFactory } = require('test-helpers/factories')
+const { fixture, truncate, enableSnapshots } = require('test-helpers')
 const { generateToken } = require('lib/services/token-service')
 
 describe('integration-tests/graphql-server/current-user', () => {
@@ -13,11 +12,11 @@ describe('integration-tests/graphql-server/current-user', () => {
   beforeEach(enableSnapshots)
 
   beforeEach(async () => {
-    await truncateModel(User)
-    user = await User.create(userFactory({
+    await truncate(User)
+    user = await fixture(User, {
       id: 12345,
       email: 'test@example.com'
-    }))
+    })
   })
 
   it('can be queried for the current user', async () => {

@@ -10,8 +10,7 @@ const {
   ConversationParticipant,
   User
 } = require('lib/db/models')
-const { truncateModel, enableSnapshots } = require('test-helpers')
-const { userFactory } = require('test-helpers/factories')
+const { fixture, truncate, enableSnapshots } = require('test-helpers')
 const { generateToken } = require('lib/services/token-service')
 
 describe('integration-tests/graphql-server/chat', () => {
@@ -23,41 +22,41 @@ describe('integration-tests/graphql-server/chat', () => {
   beforeEach(enableSnapshots)
 
   beforeEach(async () => {
-    await Promise.all([
+    await truncate([
       Conversation,
       ChatMessage,
       ConversationParticipant,
       User
-    ].map(truncateModel))
+    ])
 
-    user = await User.create(userFactory({
+    user = await fixture(User, {
       id: 12345,
       firstName: 'John',
       lastName: 'Smith'
-    }))
+    })
 
-    const user2 = await User.create(userFactory({
+    const user2 = await fixture(User, {
       id: 23456,
       firstName: 'Jane',
       lastName: 'Doe'
-    }))
+    })
 
     // create conversation
-    conversation = await Conversation.create()
+    conversation = await fixture(Conversation)
 
     // create participants
-    await ConversationParticipant.insert({
+    await fixture(ConversationParticipant, {
       conversationId: conversation.id,
       userId: user.id
     })
 
-    await ConversationParticipant.insert({
+    await fixture(ConversationParticipant, {
       conversationId: conversation.id,
       userId: user2.id
     })
 
     const createMessage = (user, body, date) => {
-      return ChatMessage.insert({
+      return fixture(ChatMessage, {
         conversationId: conversation.id,
         userId: user.id,
         body,
