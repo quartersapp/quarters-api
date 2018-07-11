@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can create a new artist/user 1`] = `
+Object {
+  "data": Object {
+    "createArtistUser": Object {
+      "artist": Object {
+        "city": Object {
+          "name": "Toronto",
+        },
+        "name": "Lost Cousins",
+      },
+    },
+  },
+}
+`;

@@ -12,7 +12,8 @@ type Query {
 # Mutations
 
 type Mutation {
-  createHostUser(input: CreateHostUserInput!): CreateHostUserPayload
+  createHostUser(input: CreateHostUserInput!): CreateHostUserPayload,
+  createArtistUser(input: CreateArtistUserInput!): CreateArtistUserPayload
 }
 
 input CreateHostUserInput {
@@ -26,6 +27,19 @@ input CreateHostUserInput {
 
 type CreateHostUserPayload {
   user: User!
+}
+
+input CreateArtistUserInput {
+  firstName: String!,
+  lastName: String!,
+  artistName: String!,
+  email: String!,
+  password: String!,
+  cityId: ID!
+}
+
+type CreateArtistUserPayload {
+  artist: Artist!
 }
 
 # Custom Scalars
